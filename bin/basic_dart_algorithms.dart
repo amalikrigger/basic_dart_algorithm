@@ -1,9 +1,3 @@
-import 'dart:collection';
-import 'dart:ffi';
-
-import 'package:basic_dart_algorithms/basic_dart_algorithms.dart'
-    as basic_dart_algorithms;
-
 // ANSI escape codes for colors
 const String colorGreen = '\x1B[32m';
 const String colorRed = '\x1B[31m';
@@ -126,7 +120,6 @@ bool listEquals<T>(List<T> list1, List<T> list2) {
 }
 
 int linearSearch(List<int> arr, int target) {
-  int i = 0;
   for (int i = 0; i < arr.length; i++) {
     if (arr[i] == target) {
       return i;

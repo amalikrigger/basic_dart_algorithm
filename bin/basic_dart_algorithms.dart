@@ -186,6 +186,36 @@ void reverse(List<int> arr, int start, int end) {
   }
 }
 
+List<int> rotateArrayInternal(List<int> arr, int spaces) {
+  if (arr.isEmpty) {
+    return arr;
+  }
+  int length = arr.length;
+  int k = spaces % length; // Effective rotation spaces
+
+  if (k < 0) {
+    k = length + k; // Handle negative spaces for left rotation if needed
+  }
+
+  List<int> rotatedArr = List.from(arr); // Create a copy to avoid modifying original
+
+  void reverse(int start, int end) {
+    while (start < end) {
+      int temp = rotatedArr[start];
+      rotatedArr[start] = rotatedArr[end];
+      rotatedArr[end] = temp;
+      start++;
+      end--;
+    }
+  }
+
+  reverse(0, length - 1);
+  reverse(0, k - 1);
+  reverse(k, length - 1);
+
+  return rotatedArr;
+}
+
 int longestSubstringWithoutRepeatingCharacters(String str) {
   Set<String> seen = {};
   int left = 0;
